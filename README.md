@@ -1,1 +1,1 @@
-# [TM Log](tayyabmujahid.github.io)
+[TM Log](tayyabmujahid.github.io)
