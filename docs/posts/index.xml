@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on TM Log</title>
+    <link>https://tayyabmujahid.github.io/posts/</link>
+    <description>Recent content in Posts on TM Log</description>
+    <image>
+      <url>https://tayyabmujahid.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://tayyabmujahid.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 30 Nov 2022 11:53:24 +0300</lastBuildDate><atom:link href="https://tayyabmujahid.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Post</title>
+      <link>https://tayyabmujahid.github.io/posts/test_post/</link>
+      <pubDate>Wed, 30 Nov 2022 11:53:24 +0300</pubDate>
+      
+      <guid>https://tayyabmujahid.github.io/posts/test_post/</guid>
+      <description>Desc Text.</description>
+    </item>
+    
+    <item>
+      <title>Arrays vs Vectors in C&#43;&#43;</title>
+      <link>https://tayyabmujahid.github.io/posts/array_vs_vectors_cpp/</link>
+      <pubDate>Wed, 30 Nov 2022 11:25:30 +0300</pubDate>
+      
+      <guid>https://tayyabmujahid.github.io/posts/array_vs_vectors_cpp/</guid>
+      <description>Arrays vs Vectors in C++ Vectors Arrays Implementation &amp;amp; Type
+Vector is a template class which present in C++ only and not in C, C++ STL Vector is similar to pythonlist , Arrays are built-in langauge construct present in C++ and C. #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; using namespace std; int main(){ vector&amp;lt;int&amp;gt; g1; # adding elements to the vector for (int i=1; i &amp;lt;=5;i++){ g1.push_back(i); } #Iterating through the vector for (auto i=g1.</description>
+    </item>
+    
+  </channel>
+</rss>

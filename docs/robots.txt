@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://tayyabmujahid.github.io/sitemap.xml
