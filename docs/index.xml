@@ -11,11 +11,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 30 Nov 2022 11:53:24 +0300</lastBuildDate><atom:link href="https://tayyabmujahid.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test Post</title>
-      <link>https://tayyabmujahid.github.io/posts/test_post/</link>
+      <title>PostGres with Docker</title>
+      <link>https://tayyabmujahid.github.io/posts/postgres_docker/</link>
       <pubDate>Wed, 30 Nov 2022 11:53:24 +0300</pubDate>
       
-      <guid>https://tayyabmujahid.github.io/posts/test_post/</guid>
+      <guid>https://tayyabmujahid.github.io/posts/postgres_docker/</guid>
       <description>Desc Text.</description>
     </item>
     
