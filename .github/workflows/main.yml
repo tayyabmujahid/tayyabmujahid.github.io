@@ -2,8 +2,17 @@ name: CI
 on: push
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: "0.107.0"
     steps:
+      - name: Check version
+        if: ${{ github.event.inputs.hugoVersion }}
+        run: export HUGO_VERSION="${{ github.event.inputs.hugoVersion }}"
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Git checkout
         uses: actions/checkout@v3
 
@@ -11,12 +20,12 @@ jobs:
         # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version
         run: git submodule update --init --recursive
 
-      - name: Setup hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "0.64.0"
+     # - name: Setup hugo
+      #  uses: peaceiris/actions-hugo@v2
+      #  with:
+      #    hugo-version: "0.107.0"
 
-      - name: Build
+      - name: Build with hugo
         # remove --minify tag if you do not need it
         # docs: https://gohugo.io/hugo-pipes/minification/
         run: hugo
