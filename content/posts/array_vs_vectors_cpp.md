@@ -5,11 +5,7 @@ tags: ["C++","programming"]
 draft: false
 ---
 
-# Arrays vs Vectors in C++
-
-### Arrays
-
-**Implementation & Type**
+### **Implementation & Type**
 
 - Vector is a *template class* which present in C++ only and not in C, C++ STL Vector is similar to python`list` , Arrays are built-in langauge construct present in C++ and C.
 
@@ -45,7 +41,7 @@ int main(){
   }
   ```
 
-  **Size**
+  ### **Size**
 
 - Size of arrays are fixed and vectors are re-sizable i.e. they can grow and shrink as vectors are allocated on heap of memory.
 
