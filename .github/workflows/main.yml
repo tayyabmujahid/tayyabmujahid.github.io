@@ -1,7 +1,24 @@
-name: CI
-on: push
+name: Deploy to Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      hugoVersion:
+        description: "Hugo Version"
+        required: false
+        default: "0.107.0"
+
+  
+defaults:
+  run:
+    shell: bash
+  
 jobs:
-  deploy:
+# build
+  build:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: "0.107.0"
@@ -33,14 +50,14 @@ jobs:
             --buildDrafts --gc --verbose \
             --baseURL ${{ steps.pages.outputs.base_url }}
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.TOKEN }}
-          external_repository: tayyabmujahid/tayyabmujahid.github.io
-          publish_dir: ./public
-          #   keep_files: true
-          user_name: tayyabmujahid
-          user_email: tayyab.mujahid@gmail.com
-          publish_branch: master
-        #   cname: example.com
+     # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
