@@ -7,10 +7,6 @@ draft: false
 
 # Arrays vs Vectors in C++
 
-### Vectors
-
-
-
 ### Arrays
 
 **Implementation & Type**
