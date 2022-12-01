@@ -26,7 +26,10 @@ jobs:
       - name: Build with hugo
         # remove --minify tag if you do not need it
         # docs: https://gohugo.io/hugo-pipes/minification/
-        run: hugo
+        run: |
+          hugo \
+            --buildDrafts --gc --verbose \
+            --baseURL ${{ steps.pages.outputs.base_url }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
