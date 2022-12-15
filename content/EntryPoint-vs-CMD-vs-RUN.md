@@ -1,12 +1,12 @@
 ---
 title: "ENTRYPOINT vs CMD vs RUN"
 date: 2022-12-15T08:16:46+03:00
-draft: true
+draft: False
 # weight: 1
 # aliases: ["/first"]
-tags: 
+tags: ["Docker", "Entrypoint","cmd"]
 author: "TM"
-# author: ["Me", "You"] # multiple authors
+# author: ["TM"] # multiple authors
 showToc: true
 TocOpen: false
 hidemeta: false
