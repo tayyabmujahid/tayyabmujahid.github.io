@@ -100,3 +100,9 @@ Zero trust computing mitigates by requiring authentication from every user and p
 **12 Factor App**
 
 [twelve-factor app](https://12factor.net/) is a guideline for developing cloud native applications
+
+## Autoscaling
+
+Autoscaling pattern describes dynamic adjustment of resources based on the current demand. 
+
+Metrics like CPU, memory, load, business metrics etc are considered to scale services up or down.
