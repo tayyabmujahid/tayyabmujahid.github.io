@@ -2,7 +2,7 @@
 
 ```bash
 cd tayyabmujahid.github.io
-./start_new_post.sh
+./start_new_post.sh <POSTNAME>
 ```
 
 

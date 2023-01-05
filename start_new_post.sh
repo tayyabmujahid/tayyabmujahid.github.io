@@ -1,5 +1,8 @@
 #!/bin/bash
-
+if [ $# -eq 0 ]; then
+ echo "no arguments, enter post name as argument like ./start_new_post <POSTNAME>"
+ exit 1
+fi
 PTITLE=$1
 TDATE=$(date +'%Y-%m-%d')
 #function to create file name a and check for ext
