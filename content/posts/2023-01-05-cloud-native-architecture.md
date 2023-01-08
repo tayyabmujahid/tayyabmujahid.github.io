@@ -1,7 +1,7 @@
 ---
 title: "02. Cloud Native Architecture"
 date: 2023-01-05T12:15:45+03:00
-draft: True
+draft: False
 # weight: 1
 # aliases: ["/first"]
 tags: ["12FactorApp","Cloud Native Architecture","kubernetes","linux foundation course","lfs250"]
@@ -163,31 +163,31 @@ Metrics like CPU, memory, load, business metrics etc are considered to scale ser
 
 ## Cloud Native Roles
 
-#### Cloud Architect
+### Cloud Architect
 
 - designing application landscape and infrastructure 
 - with a focus on security, scalability and deployment mechanisms
 
-#### DevOps Engineer
+### DevOps Engineer
 
 - combination of developer and administrator
 - use tools and processes that balance out software development and operations
 
-#### Security Engineer
+### Security Engineer
 
-#### DevSecOps Engineer
+### DevSecOps Engineer
 
-#### Data Engineer
+### Data Engineer
 
 - collecting, storing, and analyzing the vast amounts of data
 - provisioning and managing specialized infrastructure, as well as working with that data.
 
-#### Full-Stack Developer
+### Full-Stack Developer
 
 - at home in frontend and backend development, 
 - Infrastructure essentials.
 
-#### Site Reliability Engineer(SRE)
+### Site Reliability Engineer(SRE)
 
 - SRE role was started around 2003 at Google.
 
