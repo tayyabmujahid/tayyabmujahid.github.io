@@ -57,9 +57,33 @@ Servers are configured for a single purpose like for a database or an applicatio
 ## Container Basics
 
 - `chroot` command can be earliest ancestor to the modern container technology
-- `chroot` could isolate a process from the root filesystem and "hide" the files from the process and simulate new root directory.
-- The isolated environment is called chroot jail where files cant be accessed by the process but is still present on the system
-- to isolate process even more than `chroot`, current linux kernels provide features like *namespaces* and *cgroups*
-  - namespaces are used to isolate various resources like network. A process can have its own IP address and this leads to a complete abstraction of network interfaces and routing tables
 
- 
+- `chroot` could isolate a process from the root filesystem and "hide" the files from the process and simulate new root directory.
+
+- The isolated environment is called chroot jail where files cant be accessed by the process but is still present on the system
+
+- to isolate process even more than `chroot`, current linux kernels provide features like *namespaces* and *cgroups*.
+
+  - *namespaces* are used to isolate various resources like network. A process can have its own IP address and this leads to a complete abstraction of network interfaces and routing tables.
+  - Linux kernal provides namespaces for the following
+    - **pid** - process ID provides a process with its own set of process IDs.
+    - **net** - network allows the processes to have their own network stack, including the IP address.
+    - **mnt** - mount abstracts the filesystem view and manages mount points.
+    - **ipc** - inter-process communication provides separation of named shared memory segments.
+    - **user** - provides process with their own set of user IDs and group IDs.
+    - **uts** - Unix time sharing allows processes to have their own hostname and domain name.
+    - **cgroup** - a newer namespace that allows a process to have its own set of cgroup root directories.
+    - **time** - the newest namespace can be used to virtualize the clock of the system. 
+
+  - cgroups are used to organize process in hierarchical groups and assign then resources like memory and CPU. An application can be limited to use for eg. 4GB of memory
+
+  
+
+### Container v. VMs
+
+- *virtual machines* emulate a complete machine, including the operating  system and a kernel versus *containers* share the kernel of the host machine  and, as explained, are only isolated processes
+- *Virtual machines* come with some overhead, be it boot time, size or  resource usage to run the operating system. *Containers* on the other hand are literally processes and they start a lot faster and have a smaller footprint.
+
+![3-TraditionalvsVirtualizedvsContainer.png](./assets/3-TraditionalvsVirtualizedvsContainer.png)
+
+## Running Containers
