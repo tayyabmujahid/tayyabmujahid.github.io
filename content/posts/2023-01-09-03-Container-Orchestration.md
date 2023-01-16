@@ -38,7 +38,7 @@ editPost:
 
 ## Use of Containers
 
-Generic Steps to run a web application, written in Python, on a server or a local machine
+Generic steps to run a web application, written in Python, on a server or a local machine
 
 1. Install and configure an operating system
 2. Install core python packages
@@ -58,24 +58,26 @@ Servers are configured for a single purpose like for a database or an applicatio
 
 - `chroot` command can be earliest ancestor to the modern container technology
 
-- `chroot` could isolate a process from the root filesystem and "hide" the files from the process and simulate new root directory.
+- `chroot` could isolate a process from the root file-system and "hide" the files from the process and simulate new root directory.
+
+- *chroot* changes the root directory (every process/command in Linux/Unix has current working directory call root directory). A process/command that runs in such a modified/isolated environment cannot access files outside the root.
 
 - The isolated environment is called chroot jail where files cant be accessed by the process but is still present on the system
 
 - to isolate process even more than `chroot`, current linux kernels provide features like *namespaces* and *cgroups*.
 
   - *namespaces* are used to isolate various resources like network. A process can have its own IP address and this leads to a complete abstraction of network interfaces and routing tables.
-  - Linux kernal provides namespaces for the following
+  - Linux kernal provides namespaces for the following,
     - **pid** - process ID provides a process with its own set of process IDs.
     - **net** - network allows the processes to have their own network stack, including the IP address.
-    - **mnt** - mount abstracts the filesystem view and manages mount points.
+    - **mnt** - mount abstracts the file-system view and manages mount points.
     - **ipc** - inter-process communication provides separation of named shared memory segments.
     - **user** - provides process with their own set of user IDs and group IDs.
     - **uts** - Unix time sharing allows processes to have their own hostname and domain name.
     - **cgroup** - a newer namespace that allows a process to have its own set of cgroup root directories.
     - **time** - the newest namespace can be used to virtualize the clock of the system. 
 
-  - cgroups are used to organize process in hierarchical groups and assign then resources like memory and CPU. An application can be limited to use for eg. 4GB of memory
+  - *cgroups* are used to organize process in hierarchical groups and assign then resources like memory and CPU. An application can be limited to use for eg. 4GB of memory
 
   
 
@@ -87,3 +89,77 @@ Servers are configured for a single purpose like for a database or an applicatio
 ![3-TraditionalvsVirtualizedvsContainer.png](./assets/3-TraditionalvsVirtualizedvsContainer.png)
 
 ## Running Containers
+
+- Docker is not the only standard for running containers, Open Container Initiative (OCI) *runtime-spec* can also be used.
+- OCI maintains *runC* which is a container runtime reference implementation, this low-level runtime is used in a variety of tools to start containers, including Docker.
+- OOP analogy can be used for the relationship between a container image and a running container like class and the instantiation of the class.
+
+```bash
+docker run nginx
+```
+
+- *runtime-spec* of OCI goes together with *image-spec* and it describes 
+
+  - how to unpack a container image
+  - manage the complete container lifecycle
+    - creating environment 
+    - starting, stopping and deleting the process
+
+- Alternatives for building images: [buildah](https://buildah.io/), [kaniko](https://github.com/GoogleContainerTools/kaniko) etc
+
+- Full fledged applications: Docker, [podman](https://podman.io/)
+
+  - podman has a similar API to Docker and can be used as a drop-in replacement
+  - has additional features like running containers without root and concept of Pod
+
+  ## Demo: Running Containers
+
+  ### Docker
+
+  ```bash
+  docker version
+  ```
+
+  ```bash
+  docker –help
+  ```
+
+- pre-built images on docker registry called docker hub
+
+  ```
+  docker run nginx:1.20 
+  ```
+
+- The above command runs the nginx container in the terminal and blocks any use of the terminal. To stop the container use just use `Ctrl+C`
+
+- to run in detached mode use the following command
+
+  ```bash
+  docker run --detach --publish-all nginx:1.20 
+  ```
+
+  ```bash
+  docker stop <container_id>
+  ```
+
+- the following command runs the wordpress site locally.
+
+  ```
+  docker run -d -p 80:80 tutum/wordpress
+  ```
+
+  
+
+  ### Podman
+
+  ```bash
+  podman version
+  podman --help
+  podman run --detach --publish-all nginx:1.20
+  podman ps
+  podman stop <container_id>
+  ```
+
+  
+
+## Building Container Images
