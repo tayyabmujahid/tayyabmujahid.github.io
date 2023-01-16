@@ -4,7 +4,7 @@ date: 2023-01-09T08:57:27+03:00
 draft: true
 # weight: 1
 # aliases: ["/first"]
-tags: 
+tags: ["Cloud Native Architecture","kubernetes","Docker","podman","linux foundation course","lfs250"]
 author: "TM"
 # author: ["Me", "You"] # multiple authors
 showToc: true
