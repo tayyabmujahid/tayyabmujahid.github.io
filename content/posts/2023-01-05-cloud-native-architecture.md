@@ -193,6 +193,14 @@ Metrics like CPU, memory, load, business metrics etc are considered to scale ser
 
 - create and maintain software that is reliable and scalable
 
+  SRE use the following three main metrics:
+
+- **Service Level Objectives (SLO)**: “*Specify a target level for the reliability of your service.”* - A goal that is set, for example reaching a service latency of less that 100ms.
+
+- **Service Level Indicators (SLI)**: *“A carefully defined quantitative measure of some aspect of the level of service that is provided”* - For example how long a request actually needs to be answered.
+
+- **Service Level Agreements (SLA)**: “*An explicit or implicit contract with your users that includes  consequences of meeting (or missing) the SLOs they contain. The  consequences are most easily recognized when they are financial – a  rebate or a penalty – but they can take other forms.”* - Answers the question what happens if SLOs are not met.
+
 ## Community and Governance
 
 - Cloud Native Computing Foundation(CNCF) supports open source projects that are industry standards
