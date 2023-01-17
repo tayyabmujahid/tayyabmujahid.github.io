@@ -1,10 +1,10 @@
 ---
-title: "2023 01 09 03 Container Orchestration"
+title: "Container Orchestration:Part 1/2"
 date: 2023-01-09T08:57:27+03:00
-draft: true
+draft: false
 # weight: 1
 # aliases: ["/first"]
-tags: ["Cloud Native Architecture","kubernetes","Docker","podman","linux foundation course","lfs250"]
+tags: ["cloud native architecture","kubernetes","container","Docker","podman","linux foundation course","lfs250"]
 author: "TM"
 # author: ["Me", "You"] # multiple authors
 showToc: true
@@ -163,3 +163,108 @@ docker run nginx
   
 
 ## Building Container Images
+
+- Container metaphor can be alluded to the container that ships carry and easy to handle whatever the contents of the container (ISO 668)
+
+- Docker reused the components like namespaces and cgroups in addition crucially it used *container images*
+
+- [Docker](https://www.docker.com/resources/what-container) describes a container image as following:
+
+  *“A Docker container image is a  lightweight, standalone, executable package of software that includes  everything needed to run an application: code, runtime, system tools,  system libraries and settings.”*
+
+- Docker image format was donated to the OCI as the OCI image-spec
+  - an image consists of filesystem bundle and metadata
+
+![img](./assets/4-Containerimages.png)
+
+### **Container Images**
+
+- images can be built by readinf the instructions from a buildfile called *Dockerfile*
+
+```yaml
+# Every container image starts with a base image.
+# This could be your favorite linux distribution
+FROM ubuntu:20.04 
+
+# Run commands to add software and libraries to your image
+# Here we install python3 and the pip package manager
+RUN apt-get update && \
+    apt-get -y install python3 python3-pip 
+
+# The copy command can be used to copy your code to the image
+# Here we copy a script called "my-app.py" to the containers filesystem
+COPY my-app.py /app/ 
+
+# Defines the workdir in which the application runs
+# From this point on everything will be executed in /app
+WORKDIR /app
+
+# The process that should be started when the container runs
+# In this case we start our python app "my-app.py"
+CMD ["python3","my-app.py"]
+```
+
+The above script containerizes a python script and an image can be built using the following command
+
+```bash
+docker build -t my-python-image -f Dockerfile
+```
+
+where `-t my-python-image` can specify the name tag for the image and `-f Dockerfile` points to the Dockerfile path
+
+- To distribute the image a container registry can be used to upload and download images using the following commands
+
+```bash
+docker push my-registry.com/my-python-image
+docker pull my-registry.com/my-python-image
+```
+
+
+
+## Demo: Building Container Images
+
+```bash
+# lists all the images
+docker images
+# copy the source code from the github link cd to the app
+cd app
+#to dockerize the application from the source code you must create a Dockerfile in the application directory
+
+```
+
+The Dockerfile is as below
+
+```yaml
+# syntax=docker/dockerfile:1
+# this line specifies the ase image to use;here it uses base image of node 
+FROM node:18-alpine
+WORKDIR /app
+#copy the src to the container
+COPY . .
+# install dependencies 
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
+```
+
+```bash
+#build image
+docker build -t getting-started .
+# run the image as a container
+docker run --detach --publish 3000:3000 getting-started
+```
+
+## Security
+
+- Not enough to rely on isolation properties of containers
+- containers share the kernal of a machine, which becomes risky if the containers are allowed to call kernel functions  for eg. killing a process, modifying the host network by creating routing rules.
+  - [kernel capabilities of Docker](https://docs.docker.com/engine/security/#linux-kernel-capabilities)
+
+- Greatest risk is the execution of process with too many privileges especially starting processess as root or administrator.Lot of Docker images are currently run as root users
+- Public registries are recently being used to introduce malicious software in the images
+- Sysdig has a great [blog article on how to avoid a lot of security issues and build secure container images](https://sysdig.com/blog/dockerfile-best-practices/).
+
+- 4C's of Cloud Native security. Make sure to cover every layer since it’s effectively protecting the layer within
+- The [Kubernetes documentation](https://kubernetes.io/docs/concepts/security/overview/) is a good starting point to understand the layers.
+
+![img](./assets/5-4CsofCloudNativesecurity.png)
