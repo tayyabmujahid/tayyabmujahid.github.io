@@ -54,7 +54,7 @@ Decoupled application that communicate over the network
 
 Microservices: Small independent applications with clearly defined scope and functions
 
-![Monolithic vs Microservices Architecture](./assets/1-Monolithicvsmicroservices.png)
+![Monolithic vs Microservices Architecture](/images/1-Monolithicvsmicroservices.png)
 
 ## Characteristics of Cloud Native Architecture
 
@@ -115,7 +115,7 @@ Metrics like CPU, memory, load, business metrics etc are considered to scale ser
 
 
 
-![Horizontal vs vertical scaling](./assets/2-Horizontalvsverticalscaling.png)
+![Horizontal vs vertical scaling](/images/2-Horizontalvsverticalscaling.png)
 
 ### Configuring Auto scaling
 

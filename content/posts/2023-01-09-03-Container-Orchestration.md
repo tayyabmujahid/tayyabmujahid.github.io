@@ -86,7 +86,7 @@ Servers are configured for a single purpose like for a database or an applicatio
 - *virtual machines* emulate a complete machine, including the operating  system and a kernel versus *containers* share the kernel of the host machine  and, as explained, are only isolated processes
 - *Virtual machines* come with some overhead, be it boot time, size or  resource usage to run the operating system. *Containers* on the other hand are literally processes and they start a lot faster and have a smaller footprint.
 
-![3-TraditionalvsVirtualizedvsContainer.png](./static/3-TraditionalvsVirtualizedvsContainer.png)
+![3-TraditionalvsVirtualizedvsContainer.png](/images/3-TraditionalvsVirtualizedvsContainer.png)
 
 ## Running Containers
 
@@ -175,7 +175,7 @@ docker run nginx
 - Docker image format was donated to the OCI as the OCI image-spec
   - an image consists of filesystem bundle and metadata
 
-![img](./static/4-Containerimages.png)
+![img](/images/4-Containerimages.png)
 
 ### **Container Images**
 
@@ -267,4 +267,4 @@ docker run --detach --publish 3000:3000 getting-started
 - 4C's of Cloud Native security. Make sure to cover every layer since it’s effectively protecting the layer within
 - The [Kubernetes documentation](https://kubernetes.io/docs/concepts/security/overview/) is a good starting point to understand the layers.
 
-![img](./static/5-4CsofCloudNativesecurity.png)
+![img](/images/5-4CsofCloudNativesecurity.png)
