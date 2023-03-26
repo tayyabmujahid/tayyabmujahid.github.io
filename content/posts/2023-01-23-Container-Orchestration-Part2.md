@@ -1,5 +1,5 @@
 ---
-title: "2023 01 23 Container Orchestration: Part 2/2"
+title: "Container Orchestration: Part 2/2"
 date: 2023-01-23T10:30:30+03:00
 draft: false
 # weight: 1
