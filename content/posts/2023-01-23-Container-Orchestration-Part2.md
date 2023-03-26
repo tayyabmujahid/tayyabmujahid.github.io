@@ -1,10 +1,10 @@
 ---
 title: "2023 01 23 Container Orchestration: Part 2/2"
 date: 2023-01-23T10:30:30+03:00
-draft: true
+draft: false
 # weight: 1
 # aliases: ["/first"]
-tags: ["cloud native architecture","kubernetes","container","Docker","podman","linux foundation course","lfs250"]
+tags: ["cloud native architecture","kubernetes","container","Docker","storage","service mesh","linux foundation course","lfs250"]
 author: "TM"
 # author: ["Me", "You"] # multiple authors
 showToc: true
@@ -106,4 +106,35 @@ Key-Value Store: datastore , highly availibity and strong failover mechanisms. F
 
 ## Service Mesh
 
-Traffic management, monitoring, access control, encryption etc is generally reqiured
+Traffic management, monitoring, access control, encryption etc is generally required when containers communicate.
+
+A proxy can take care of all the above mentioned functionality. This can be on a second container and it sits between a client and server and can modify or filter network traffic before it reaches the server. Popular **nginx, haproxy, envoy**
+
+A service mesh adds proxy server to every container in the architecture. Now proxies can be used to handle network communication between services.
+
+- when traffic has to be encrypted between applications, this would require adding libraries, configuration management of digital certificates etc. This can be lot of work and error prone
+- proxies form the *data-plane* of a service mesh- where networking rules are implemented
+- rules are defined in a centrally managed *control plane* and how traffic flows between Service A and Service B.
+  - a config file is written that traffic between Service A and Service B is encrypted and the config is then uploaded to the control-plane and distributed to the data-plane
+
+![img](./static/7-Istioarchitecture.png)
+
+**Service Mesh Interface** project aims to defining specifications on how service mesh can be implemented by various providers.
+
+SMI has a strong focus on Kubernetes to standardize user experience 
+
+## Storage
+
+- Container are ephemeral.To write data/files a read write layer is put on top of the container image and this is lost when the container is stopped or deleted
+- To persist data it must written on host  and a volume can be used to achieve this allows storing the information on the host.
+- This weakens the isolation of the container
+- When more than one containers are orchestrated , multiple containers need access to it or when its started on a different host even then its needs access to the data.
+- Container orchestration systems like Kubernetes can help to mitigate  these problems, but always require a robust storage system that is  attached to the host servers.
+
+
+
+![img](./static/8-Storage.png)
+
+**Storage is provisioned via a central storage system. Containers  on Server A and Server B can share a volume to read and write data**
+
+The [Container Storage Interface (CSI)](https://github.com/container-storage-interface/spec) came up to offer a uniform interface which allows attaching different  storage systems no matter if it’s cloud or on-premises storage.
