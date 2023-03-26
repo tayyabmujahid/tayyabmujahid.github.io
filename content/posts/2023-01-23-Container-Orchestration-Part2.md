@@ -1,5 +1,5 @@
 ---
-title: "Container Orchestration: Part 2/2"
+title: "2023 01 23 Container Orchestration: Part 2/2"
 date: 2023-01-23T10:30:30+03:00
 draft: false
 # weight: 1
@@ -83,7 +83,7 @@ Kubernetes is **the** standard system to orchestrate containers
   
   Modern container networking is based on [Container Network Interface](https://github.com/containernetworking/cni) (CNI)
   
-  ![img](./static/6-Routingbetweenhostsandcontainers.png)
+  ![img](../../static/images/6-Routingbetweenhostsandcontainers.png)
 
 ## Service Discovery & DNS
 
@@ -117,7 +117,7 @@ A service mesh adds proxy server to every container in the architecture. Now pro
 - rules are defined in a centrally managed *control plane* and how traffic flows between Service A and Service B.
   - a config file is written that traffic between Service A and Service B is encrypted and the config is then uploaded to the control-plane and distributed to the data-plane
 
-![img](./static/7-Istioarchitecture.png)
+![img](../../static/images/7-Istioarchitecture.png)
 
 **Service Mesh Interface** project aims to defining specifications on how service mesh can be implemented by various providers.
 
@@ -133,7 +133,7 @@ SMI has a strong focus on Kubernetes to standardize user experience
 
 
 
-![img](./static/8-Storage.png)
+![img](../../static/images/8-Storage.png)
 
 **Storage is provisioned via a central storage system. Containers  on Server A and Server B can share a volume to read and write data**
 
