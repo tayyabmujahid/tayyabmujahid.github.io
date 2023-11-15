@@ -38,16 +38,24 @@ editPost:
 
 ## Kubernetes Architecture
 
-Kubernetes is often used as a cluster
+**[Kubernetes Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/)**
 
-Kubernetes clusters consist of two different server node types
+*Kubernetes coordinates a highly available cluster of computers that are connected to work as a single unit*. Kubernetes allows to deploy containerized applications
+
+![Cluster](/images/module_01_cluster.svg)
+
+Kubernetes clusters consist of **two different server node types**
 
 - **Control Plane nodes**
+  
   - the brain of operation
   - contains components to manage the cluster 
   - control various tasks like deployment, scheduling and self-healing of containerized workloads
+  - Kubernetes API(exposed by the control plane) is used for communications with Node-level components.
+  
+- **Worker nodes** (just **Nodes**)
 
-- **Worker nodes**
+  - A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster.
 
   - applications run on worker nodes
 
@@ -55,7 +63,9 @@ Kubernetes clusters consist of two different server node types
 
     ![Kubernetes Architecture](/images/9-Kubernetesarchitecture.png)
 
-#### Services on Control Plane nodes
+  - **The nodes communicate with the control plane using the [Kubernetes API](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)**,
+
+#### Services on <u>Control Plane</u> nodes
 
 - **kube-apiserver**
   - centerpiece of Kubernetes
@@ -76,20 +86,58 @@ Kubernetes clusters consist of two different server node types
   - used to interact with API of the cloud
   - create external resources like load-balancer, storage or security groups
 
-#### Components of worker nodes
+#### Components of <u>Worker</u> nodes
 
-- **container runtime**
-  - responsible for running containers on worker- nodes
-  - containerd is favored container runtime
+- **container runtime**(docker, containerd etc)
+  - responsible for running containers on worker- nodes.
+  - containerd is favored container runtime.
 - **kubelet**
-  - small agent runs on every worker node
-  - talks to tp api-server and container runtime to handle final stage of starting containers
+  - small agent runs on every worker node.
+  - talks to tp api-server and container runtime to handle final stage of starting containers.
 - **kube-proxy**
-  - network proxy that handles inside and outside communication of a cluster
-  - it relies on underlying OS networking capabilities
+  - network proxy that handles inside and outside communication of a cluster.
+  - it relies on underlying OS networking capabilities.
 
 
 
 Application started on a worker node will continue to run even if the control plane is not available/offline but functionality like scaling, scheduling new applications etc will not be possible.
 
-kubernetes has a concept of namespaces which are (not to be confused with kernel namespaces) which are used to divide the cluster in to mulitple virtual cluster. They don't provide strong isolation and must be viewed as directory on a computer which has access controls for users.
+kubernetes has a concept of namespaces which are (not to be confused with kernel namespaces) which are used to divide the cluster in to multiple virtual cluster. They don't provide strong isolation and must be viewed as directory on a computer which has access controls for users.
+
+
+
+## Kubernetes Setup
+
+Test cluster can be setup with the following tools
+
+- [Minikube](https://minikube.sigs.k8s.io/docs/)
+- [kind](https://kind.sigs.k8s.io/)
+- [MicroK8s](https://microk8s.io/)
+
+Production-grade cluster can be setup using 
+
+- [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+- [kops](https://github.com/kubernetes/kops)
+- [kubespray](https://github.com/kubernetes-sigs/kubespray)
+
+Cloud hosted options
+
+- [Amazon](https://aws.amazon.com/eks/)(EKS)
+- [Google(GKE)](https://cloud.google.com/kubernetes-engine)
+- [Microsoft(AKS)](https://azure.microsoft.com/en-us/products/kubernetes-service/)
+- [DigitalOcean(DOKS)](https://www.digitalocean.com/products/kubernetes/)
+
+## Trying out Kubernetes
+
+#### Minikube
+
+Running a sample app on Kubernetes using minikube
+
+- Install Minikube
+- Install kubectl
+  - kubectl is Kubernetes command-line tool, kubectl, allows you  to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs
+
+- 
+- https://www.youtube.com/watch?v=X48VuDVv0do
+
+https://theaisummer.com/kubernetes/?utm_content=268889881&utm_medium=social&utm_source=twitter&hss_channel=tw-1259466268505243649
