@@ -46,6 +46,8 @@ editPost:
 
 Kubernetes clusters consist of **two different server node types**
 
+Cluster Components -  **Control Plane** & **Worker nodes**
+
 - **Control Plane nodes**
   
   - the brain of operation
@@ -57,13 +59,18 @@ Kubernetes clusters consist of **two different server node types**
 
   - A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster.
 
+    - Each node has a **Kubelet**- agent for managing the node and communicating(uses [Kubernetes API](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)) with control plane
+    - also has a container runtime for handling container operations 
+      - containerd
+      - CRI-O
+  
   - applications run on worker nodes
-
+  
   - their behavior is completely controlled by the control plane
-
+  
     ![Kubernetes Architecture](/images/9-Kubernetesarchitecture.png)
-
-  - **The nodes communicate with the control plane using the [Kubernetes API](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)**,
+  
+  - **The kubelet in nodes communicate with the control plane using the [Kubernetes API](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)**,
 
 #### Services on <u>Control Plane</u> nodes
 
@@ -71,12 +78,14 @@ Kubernetes clusters consist of **two different server node types**
   - centerpiece of Kubernetes
   - All components interact with api-server
   - users access the cluster using this
+  - kube-apiserver scales horizontally i.e. it scales by deploying more instances
 - **etcd**
-  - database to store the state of the cluster
+  - key-value database to store the state of the cluster
   - [etcd](https://etcd.io/) is not official part of Kubernetes
     - key-value store for distributer systems
 - **kube-scheduler**
   - when a new workload should be scheduled
+  - when new **Pods** are created, assignment to **Node**
   - kube-scheduler decides/choses that would fit the properties like CPU & Memory
 - **kube-controller-manager**
   - contains non-terminating control loops
@@ -88,7 +97,7 @@ Kubernetes clusters consist of **two different server node types**
 
 #### Components of <u>Worker</u> nodes
 
-- **container runtime**(docker, containerd etc)
+- **container runtime**(docker, containerd, CRI-O, etc)
   - responsible for running containers on worker- nodes.
   - containerd is favored container runtime.
 - **kubelet**
@@ -129,7 +138,31 @@ Cloud hosted options
 
 ## Trying out Kubernetes
 
-#### Minikube
+### Minikube
+
+#### Introduction : Basics about Deployment
+
+- Containerized applications are deployed on top of a running Kubernetes Cluster
+- To run a containerized application you create a Kubernetes **Deployment**
+- control plane schedules the application instance in the Deployment to run on individual **Nodes**
+- **Deployment** **controller** continuously monitors created instances.
+- **Node** hosting an instance goes down or is deleted, the **Deployment**  **controller** replaces the instance with an instance on another **Node** in the cluster - **self-healing**
+
+
+
+![Deployment and containerized app](/images/module_02_first_app.svg)
+
+
+
+Create a Cluster
+
+Create Deployment
+
+Create Service to expose 
+
+​	expose the pod to the public
+
+​	Provision an external IP address
 
 Running a sample app on Kubernetes using minikube
 
@@ -141,3 +174,6 @@ Running a sample app on Kubernetes using minikube
 - https://www.youtube.com/watch?v=X48VuDVv0do
 
 https://theaisummer.com/kubernetes/?utm_content=268889881&utm_medium=social&utm_source=twitter&hss_channel=tw-1259466268505243649
+
+
+
