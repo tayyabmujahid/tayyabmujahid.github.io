@@ -154,26 +154,15 @@ Cloud hosted options
 
 
 
-Create a Cluster
-
-Create Deployment
-
-Create Service to expose 
-
-​	expose the pod to the public
-
-​	Provision an external IP address
-
-Running a sample app on Kubernetes using minikube
-
-- Install Minikube
-- Install kubectl
-  - kubectl is Kubernetes command-line tool, kubectl, allows you  to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs
-
-- 
-- https://www.youtube.com/watch?v=X48VuDVv0do
-
-https://theaisummer.com/kubernetes/?utm_content=268889881&utm_medium=social&utm_source=twitter&hss_channel=tw-1259466268505243649
 
 
+- Create a Cluster[[link](https://kubernetes.io/docs/tutorials/hello-minikube/)]
+
+  - Create Deployment[[link](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/)]
+
+  - Create Service to expose 
+
+    - expose the pod to the public
+
+      This can be done in two ways either using [kube proxy](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/) or using [service](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/)
 
